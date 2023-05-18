@@ -3,9 +3,9 @@ import { FaGithub, FaLock, FaRegEnvelope } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import '../../assets/fonts/font.css'
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
-
+import Swal from 'sweetalert2'
 const Login = () => { 
     const {signIn}= useContext(AuthContext);
     const handleLogin = event =>{
@@ -19,7 +19,17 @@ const Login = () => {
             const user = result.user;
             console.log(user);
         })
-        .catch(error=>console.log(error))
+        .catch(error=>{
+            console.log(error.result)
+                Swal.fire({
+                    icon: 'error',
+                    text: `${error}`,
+                  })
+            
+            
+            console.log(error)
+
+        })
 
     }
     return (
@@ -40,7 +50,7 @@ const Login = () => {
                             <input className='py-2 px-8 mt-8 rounded-xl border' type="password" name="password" placeholder='Password' />
                             <FaLock className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaLock>
                             </div>
-                            <input type="submit" className='bg-[#055763]  mt-8 border-none text-white rounded-xl py-2 ' value="Login" />
+                            <input type="submit" className='bg-[#055763]  mt-8 border-none text-white rounded-xl py-2 ' value="Login"/>
                             <div className='flex mt-4'>
                                 <div className='flex items-center space-x-1 flex-1 text-xs'>
                                     <input type="checkbox"  className="checkbox-xs checkbox" />

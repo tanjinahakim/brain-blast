@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import img from '../../assets/images/Logo/register.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-
+import Swal from 'sweetalert2'
 const Register = () => {
     const {createUser} =useContext(AuthContext);
     const handleRegister = (event)=>{
@@ -16,7 +16,13 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo .value;
         console.log(name,username,email,password,photo);
-
+        if(password.length<6)
+        {
+            Swal.fire({
+                icon: 'error',
+                text:'Your password must be at least 8 characters'})
+            return;
+        }
         createUser(email,password)
         .then(result=>{
             const user = result.user;
@@ -38,15 +44,15 @@ const Register = () => {
                         <p className='text-sm mt-4 text-[#C28B95] text-center'>your journey with us</p>
                         <form onSubmit={handleRegister} className='flex flex-col'>
                             <div className='relative'>
-                            <input className='py-2 px-8 mt-8 rounded-xl w-full border'  type="text" name="name" placeholder='Full Name' />
+                            <input className='py-2 px-8 mt-8 rounded-xl w-full border'  type="text" name="name" placeholder='Full Name' required />
                             <FaRegUser className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaRegUser>
                             </div>
                             <div className='relative'>
-                            <input className='py-2 px-8 mt-8 rounded-xl border w-full'  type="text" name="username" placeholder='User Name' />
+                            <input className='py-2 px-8 mt-8 rounded-xl border w-full'  type="text" name="username" placeholder='User Name' required />
                             <FaUserCircle className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaUserCircle>
                             </div>
                             <div className='relative'>
-                            <input className='py-2 px-8 mt-8 rounded-xl border w-full'  type="email" name="email" placeholder='Email' />
+                            <input className='py-2 px-8 mt-8 rounded-xl border w-full'  type="email" name="email" placeholder='Email' required/>
                             <FaRegEnvelope className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaRegEnvelope>
                             </div>
                             <div className='relative'>
