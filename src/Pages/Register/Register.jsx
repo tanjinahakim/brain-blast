@@ -2,7 +2,31 @@ import { FaCameraRetro, FaLock, FaRegEnvelope, FaRegUser, FaUserCircle } from "r
 import '../../assets/fonts/font.css'
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/Logo/register.jpg'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const Register = () => {
+    const {createUser} =useContext(AuthContext);
+    const handleRegister = (event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const username = form.username.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo .value;
+        console.log(name,username,email,password,photo);
+
+        createUser(email,password)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+
+    }
     return (
         <>
             <section className="min-h-screen flex items-center justify-center">
@@ -12,7 +36,7 @@ const Register = () => {
                     <div className='w-full px-16 my-10'>
                         <h2 className='font-extrabold text-3xl text-[#033663] text-center font '>Get Started</h2>
                         <p className='text-sm mt-4 text-[#C28B95] text-center'>your journey with us</p>
-                        <form className='flex flex-col'>
+                        <form onSubmit={handleRegister} className='flex flex-col'>
                             <div className='relative'>
                             <input className='py-2 px-8 mt-8 rounded-xl w-full border'  type="text" name="name" placeholder='Full Name' />
                             <FaRegUser className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaRegUser>
@@ -33,7 +57,7 @@ const Register = () => {
                             <input className='py-2 px-8 mt-8 rounded-xl border w-full' type="text" name="photo" placeholder='Photo URL' />
                             <FaCameraRetro className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaCameraRetro>
                             </div>
-                            <input type="submit" className='bg-[#055763]  mt-8 border-none text-white rounded-xl py-2  w-full' value="Login" />
+                            <input type="submit" className='bg-[#055763]  mt-8 border-none text-white rounded-xl py-2  w-full' value="Register" />
                                 <div className='flex items-center space-x-1  text-xs mt-4'>
                                     <input type="checkbox"  className="checkbox-xs checkbox" />
                                     <p>Accept Terms and Conditions</p>
