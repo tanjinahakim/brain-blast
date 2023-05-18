@@ -2,7 +2,15 @@ import img from '../../../assets/images/Logo/login4.jpg'
 import { FaGithub, FaLock, FaRegEnvelope } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import '../../../assets/fonts/font.css'
-const Login = () => {
+import { Link } from 'react-router-dom';
+const Login = () => { 
+    const handleLogin = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+    }
     return (
         <>
             <section className="min-h-screen flex items-center justify-center">
@@ -12,7 +20,7 @@ const Login = () => {
                     <div className='sm:w-1/2 px-16 my-10'>
                         <h2 className='font-extrabold text-3xl text-[#033663] text-center font '>Login</h2>
                         <p className='text-sm mt-4 text-[#C28B95] text-center'>If you are already a member, easily log in</p>
-                        <form className='flex flex-col'>
+                        <form onSubmit={handleLogin} className='flex flex-col'>
                             <div className='relative'>
                             <input className='py-2 px-8 mt-8 rounded-xl border'  type="email" name="email" placeholder='Email' />
                             <FaRegEnvelope className='text-gray-300 absolute bottom-1 left-3 -translate-y-1/2 text-center  '></FaRegEnvelope>
@@ -40,6 +48,9 @@ const Login = () => {
                         <div className='flex mt-2 mr-6 space-x-1 items-center justify-center'>
                         <button className="btn btn-outline btn-sm  py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FcGoogle className='mr-2'></FcGoogle> Login with Google</button>
                         <button className="btn btn-outline btn-sm py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
+                        </div>
+                        <div className='mt-4 font-1'>
+                            <p className='text-sm text-gray-500'>Don`t have an account?<Link to={'/register'} className='font text-red-600 ml-1 font-bold'>Register Now</Link></p>
                         </div>
                     </div>
                     {/* image section */}
