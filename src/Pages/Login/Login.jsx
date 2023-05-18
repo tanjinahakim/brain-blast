@@ -3,11 +3,12 @@ import { FaGithub, FaLock, FaRegEnvelope } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import '../../assets/fonts/font.css'
 import { Link } from 'react-router-dom';
-import { useContext} from 'react';
+import { useContext, useState} from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 const Login = () => { 
-    const {signIn}= useContext(AuthContext);
+    const {signIn,handleGoogleLogin}= useContext(AuthContext);
+    const [loading,setLoading]=useState(false)
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -25,10 +26,20 @@ const Login = () => {
                     icon: 'error',
                     text: `${error}`,
                   })
-            
-            
-            console.log(error)
+        })
+    }
+    // Login with google
+    const  googleLoginHandler = () =>{
+        setLoading(true);
+        handleGoogleLogin()
+        .then(result=>{
+            setLoading(false)
+            console.log(result)
 
+        })
+        .catch(err=>{
+            setLoading(false)
+            console.log(err)
         })
 
     }
@@ -67,7 +78,7 @@ const Login = () => {
                             <hr className='border-gray-400'/>
                         </div>
                         <div className='flex mt-2 mr-6 space-x-1 items-center justify-center'>
-                        <button className="btn btn-outline btn-sm  py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FcGoogle className='mr-2'></FcGoogle> Login with Google</button>
+                        <button onClick={googleLoginHandler} className="btn btn-outline btn-sm  py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FcGoogle className='mr-2'></FcGoogle> Login with Google</button>
                         <button className="btn btn-outline btn-sm py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
                         </div>
                         <div className='mt-4 font-1'>
