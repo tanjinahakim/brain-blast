@@ -3,6 +3,7 @@ import logo from '../../../assets/images/Logo/logo.jpg';
 import '../../../assets/fonts/font.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { Avatar, Tooltip } from "@mui/material";
 
 const NavBar = () => {
     const {user,logOut}=useContext(AuthContext)
@@ -11,7 +12,6 @@ const NavBar = () => {
         .then()
         .catch(error=>console.log(error))
     }
-    console.log(user);
         return (
         <div className="navbar bg-[#F9F1F5]">
         <div className="navbar-start">
@@ -51,7 +51,14 @@ const NavBar = () => {
             </ul>
         </div>
         <div className="navbar-end mr-10">
+                { user && 
+                            <Tooltip title={user.displayName} >
+                                <Avatar className='me-3' src={user.photoURL}></Avatar>
+                            </Tooltip>
+                        
+                }
             {
+                
                 user?<Link onClick={handleLogOut} className="btn btn-outline btn-primary">LogOut</Link>
                 :<Link to={'/login'} className="btn btn-outline btn-secondary">Login</Link>
             }

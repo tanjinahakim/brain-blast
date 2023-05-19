@@ -6,8 +6,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
 const Register = () => {
-    const {createUser,user} =useContext(AuthContext);
-    console.log(user);
+    const {createUser,updated} =useContext(AuthContext);
+    
     const handleRegister = (event)=>{
         event.preventDefault();
         const form = event.target;
@@ -28,6 +28,7 @@ const Register = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
+            updated(user,username,photo)
         })
         .catch(error=>{
             console.log(error)
