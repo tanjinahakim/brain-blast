@@ -40,6 +40,12 @@ const NavBar = () => {
             <ul className="menu menu-horizontal px-1 menu-font">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link>All Toys</Link></li>
+            {
+                user &&  <li><Link>My Toys</Link></li>
+            }
+            {
+                user &&  <li><Link>Add Toys</Link></li>
+            }
             <li><Link>About</Link></li>
             <li><Link to={'/blog'}>Blog</Link></li>
             </ul>
