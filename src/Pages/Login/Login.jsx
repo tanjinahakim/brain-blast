@@ -8,6 +8,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 const Login = () => { 
     const {signIn,handleGoogleLogin}= useContext(AuthContext);
+    // eslint-disable-next-line no-unused-vars
     const [loading,setLoading]=useState(false)
     const handleLogin = event =>{
         event.preventDefault();
