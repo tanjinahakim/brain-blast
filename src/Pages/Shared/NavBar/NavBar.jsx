@@ -13,7 +13,7 @@ const NavBar = () => {
         .catch(error=>console.log(error))
     }
         return (
-        <div className="navbar bg-[#F9F1F5]">
+        <div className="navbar bg-[#1D1847] text-white">
         <div className="navbar-start">
             <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
