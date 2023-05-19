@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/images/Logo/logo.jpg';
 import '../../../assets/fonts/font.css';
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
-    return (
+    const {user,logOut}=useContext(AuthContext)
+    const handleLogOut = ()=>{
+        logOut()
+        .then()
+        .catch(error=>console.log(error))
+    }
+    console.log(user);
+        return (
         <div className="navbar bg-[#F9F1F5]">
         <div className="navbar-start">
             <div className="dropdown">
@@ -12,6 +21,9 @@ const NavBar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 menu-font">
                 <li><Link to={'/'}>Home</Link></li>
+                <li>
+                <Link>All Toys</Link>
+                </li>
                 <li>
                 <Link className="justify-between">About</Link>
                 </li>
@@ -27,14 +39,16 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1 menu-font">
             <li><Link to={'/'}>Home</Link></li>
-            <li>
-                <Link className="justify-between">About</Link>
-            </li>
+            <li><Link>All Toys</Link></li>
+            <li><Link>About</Link></li>
             <li><Link to={'/blog'}>Blog</Link></li>
             </ul>
         </div>
         <div className="navbar-end mr-10">
-            <Link to={'/login'} className="btn btn-outline btn-secondary">Login</Link>
+            {
+                user?<Link onClick={handleLogOut} className="btn btn-outline btn-primary">LogOut</Link>
+                :<Link to={'/login'} className="btn btn-outline btn-secondary">Login</Link>
+            }
         </div>
     </div>
     );
