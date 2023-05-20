@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
@@ -12,16 +13,16 @@ const AllToys = () => {
     },[])
     return (
         <>
-            <div className="overflow-x-auto ">
-            <table className="lg:table table-normal table-zebra w-full">
+            <div className="lg:overflow-x-auto overflow-hidden">
+            <table className=" table-compact w-full">
                 {/* head */}
-                <thead>
+                <thead className="text-left">
                 <tr>
                     <th></th>
                     <th>Toy Name</th>
                     <th>Category</th>
                     <th>Price</th>
-                    <th>Available Quantity</th>
+                    <th>Available <br /> Quantity</th>
                     <th>Seller</th>
                     <th>Details</th>
                 </tr>
@@ -36,7 +37,7 @@ const AllToys = () => {
                             <td>{toy.price}</td>
                             <td>{toy.quantity}</td>
                             <td>{toy.seller}</td>
-                            <td><Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-accent">View Details</button></Link></td>
+                            <td><Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-accent text-xs btn-sm"><FaEye></FaEye></button></Link></td>
                             </tr>
 
                         </tbody>)
