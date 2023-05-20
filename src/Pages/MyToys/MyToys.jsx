@@ -77,7 +77,7 @@ const MyToys = () => {
                             <td>
                                 <div className="lg:space-x-2 space-y-2">
                                 <Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-primary btn-sm"><FaEye></FaEye></button></Link>
-                                <button className="btn btn-outline btn-accent btn-sm"><FaPencilAlt></FaPencilAlt></button>
+                                <Link to={`/updateToy/${toy._id}`}><button className="btn btn-outline btn-accent btn-sm"><FaPencilAlt></FaPencilAlt></button></Link>
                                 <button onClick={()=>handleDelete(toy._id)} className="btn btn-outline btn-error btn-sm"><FaTrash></FaTrash></button>
                                 </div>
                             </td>
