@@ -12,7 +12,7 @@ const AllToys = () => {
     },[])
     return (
         <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
             <table className="lg:table table-normal table-zebra w-full">
                 {/* head */}
                 <thead>
@@ -29,7 +29,7 @@ const AllToys = () => {
                 </thead>
                 {
                         toys.map(toy=><tbody key={toy._id}>
-                            <tr>
+                            <tr className="border">
                             <th>{++i}</th>
                             <td>{toy.name}</td>
                             <td>{toy.category}</td>

@@ -6,10 +6,10 @@ const Toy = () => {
     const {name,seller,email,price,quantity,description,rating,photo} = toy;
     return (
         <>
-           <div className="hero min-h-screen bg-base-200 max-w-5xl mx-auto my-10">
-                <div className="hero-content flex-col lg:flex-row px-10">
+           <div className="hero min-h-screen bg-base-200 max-w-5xl mx-auto lg:my-10">
+                <div className="hero-content flex-col lg:flex-row Lg:px-10">
                     <img src={photo} className="max-w-sm rounded-lg shadow-2xl" />
-                    <div className="mx-10">
+                    <div className="lg:mx-10">
                         <div className="flex justify-between items-center">
                             <h1 className="text-5xl font-bold">{name}</h1>
                             <button className="btn btn-outline btn-error btn-sm">Add</button>
