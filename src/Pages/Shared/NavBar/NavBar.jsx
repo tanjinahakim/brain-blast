@@ -31,9 +31,9 @@ const NavBar = () => {
             </ul>
             </div>
             <div className="flex justify-center items-center ml-10">
-            <p className="normal-case text-xl font">Brain</p>
-            <img src={logo} alt="" className="w-14 h-14  rounded-full " />
-            <p className="normal-case text-xl font">Blast</p>
+            <p className="normal-case lg:text-xl font">Brain</p>
+            <img src={logo} alt="" className="w-14 h-14 md:w-4 md:h-4  rounded-full " />
+            <p className="normal-case lg:text-xl font">Blast</p>
             </div>
         </div>
         <div className="navbar-center hidden lg:flex">
