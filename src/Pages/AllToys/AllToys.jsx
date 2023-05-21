@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
 
 const AllToys = () => {
-    const {user}=useContext(AuthContext)
+    const {user}=useContext(AuthContext);
     const [toys,setToys]=useState([]);
     let i=0;
     useEffect(()=>{

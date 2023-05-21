@@ -24,9 +24,6 @@ const NavBar = () => {
                 <li>
                 <Link>All Toys</Link>
                 </li>
-                <li>
-                <Link className="justify-between">About</Link>
-                </li>
                 <li><Link to={'/blog'}>Blog</Link></li>
             </ul>
             </div>

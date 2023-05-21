@@ -9,6 +9,7 @@ import Toy from "../Pages/Toy/Toy";
 import MyToys from "../Pages/MyToys/MyToys";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
+import Blog from "../Pages/Blog/Blog";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           path:'/updateToy/:id',
           element:<UpdateToy></UpdateToy>,
           loader:({params})=> fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys/${params.id}`)
+        },
+        {
+          path:'/blog',
+          element:<Blog></Blog>
         }
       ]
     },
