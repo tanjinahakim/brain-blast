@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import Swal from 'sweetalert2';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AllToys = () => {
+    const {user}=useContext(AuthContext)
     const [toys,setToys]=useState([]);
     let i=0;
     useEffect(()=>{
@@ -11,6 +14,16 @@ const AllToys = () => {
         .then(res=>res.json())
         .then(data=>setToys(data))
     },[])
+    const notify = () =>{
+        Swal.fire({
+            title: 'Please Login First',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            backdrop: `
+            rgba(0,0,123,0.4)`
+          })
+    };
     return (
         <>
             <div className="lg:overflow-x-auto overflow-hidden">
@@ -37,7 +50,12 @@ const AllToys = () => {
                             <td>{toy.price}</td>
                             <td>{toy.quantity}</td>
                             <td>{toy.seller}</td>
-                            <td><Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-accent text-xs btn-sm"><FaEye></FaEye></button></Link></td>
+                            <td>
+                               {
+                                user?<><Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-accent text-xs btn-sm"><FaEye></FaEye></button></Link></>
+                                :<><Link to={`/toy/${toy._id}`} onClick={notify}><button  className="btn btn-outline btn-accent text-xs btn-sm"><FaEye></FaEye></button></Link></>
+                               }
+                            </td>
                             </tr>
 
                         </tbody>)

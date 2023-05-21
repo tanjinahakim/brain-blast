@@ -19,7 +19,7 @@ const ShopByCategory = () => {
       };
     return (
         <section className='mt-20 mb-50'>
-            <h1 className='font font-bold text-5xl text-center'>Popular Toys</h1>
+            <h1 className='font font-bold text-5xl text-center'>Popular <span className='text-pink-600'>Toys</span> </h1>
            <div className="tabs tabs-boxed max-w-xl mx-auto mt-14 relative">
             <div className=' absolute left-1/4 font-bold font space-x-3 '>
             <a className="tab hover:border px-4 hover:text-blue-600 hover:text-lg " onClick={() => handleTabClick("Math")}>Math</a> 
