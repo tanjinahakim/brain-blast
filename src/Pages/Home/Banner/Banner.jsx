@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <>
             <section className='relative bg-gray-50' >
-            <img src={toys} className='absolute top-8 h-32 right-7 animate-bounce' />
+            <img src={toys} className='absolute top-8 h-32 right-7 animate-pulse' />
                 <div className='text-center absolute inset-x-4 inset-y-28 '>
                  <p>Explore best learning toys for your smart child</p>
                 <h1 className='font text-4xl'> Brain Blast</h1>
