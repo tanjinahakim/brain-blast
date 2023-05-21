@@ -8,12 +8,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 const AllToys = () => {
     const {user}=useContext(AuthContext);
     const [toys,setToys]=useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     let i=0;
     useEffect(()=>{
-        fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys`)
+        fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys?search=${searchQuery}`)
         .then(res=>res.json())
         .then(data=>setToys(data))
-    },[])
+    },[searchQuery])
     const notify = () =>{
         Swal.fire({
             title: 'You have to log in first to view details',
@@ -24,8 +25,21 @@ const AllToys = () => {
             rgba(0,0,123,0.4)`
           })
     };
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
     return (
         <>
+            <div className="mb-4">
+                    <input
+                        type="text"
+                        placeholder="Search by toy name"
+                        className="border py-2 px-3 w-full"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                </div>
             <div className="lg:overflow-x-auto overflow-hidden">
             <table className=" table-compact w-full">
                 {/* head */}
