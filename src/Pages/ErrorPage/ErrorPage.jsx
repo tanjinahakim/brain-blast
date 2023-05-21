@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/Error/404.jpg'
+import useTitle from "../../hooks/useTitle";
 const ErrorPage = () => {
+    useTitle("Error")
     return (
         <div className="max-w-5xl mx-auto"> 
             <div className="my-10 ">

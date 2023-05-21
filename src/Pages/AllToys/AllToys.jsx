@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
-
+import useTitle from "../../hooks/useTitle";
 const AllToys = () => {
     const {user}=useContext(AuthContext);
     const [toys,setToys]=useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    useTitle('All Toys')
     let i=0;
     useEffect(()=>{
         fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys?search=${searchQuery}`)

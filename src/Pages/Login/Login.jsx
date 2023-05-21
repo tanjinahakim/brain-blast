@@ -6,12 +6,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState} from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
+import useTitle from '../../hooks/useTitle';
 const Login = () => { 
     const {signIn,handleGoogleLogin}= useContext(AuthContext);
     // eslint-disable-next-line no-unused-vars
     const [loading,setLoading]=useState(false);
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    useTitle('Login')
     const from = location.state?.from?.pathname || "/"
     const handleLogin = event =>{
         event.preventDefault();

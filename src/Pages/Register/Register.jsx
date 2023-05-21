@@ -5,7 +5,9 @@ import img from '../../assets/images/bg/login3.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import useTitle from "../../hooks/useTitle";
 const Register = () => {
+    useTitle("Register");
     const {createUser,updated} =useContext(AuthContext);
     const navigate = useNavigate()
     const handleRegister = (event)=>{
