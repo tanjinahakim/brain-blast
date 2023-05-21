@@ -22,7 +22,7 @@ const UpdateToy = () => {
         const photo = form.photo.value;
         const updatedToy = {name,seller,email,quantity,price,rating,category,description,photo}
         console.log(updatedToy);
-        fetch(`http://localhost:5000/allToys/${_id}`,{
+        fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

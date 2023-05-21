@@ -20,8 +20,8 @@ const Priority = () => {
                     <FaPeopleCarry className="w-20 h-20 lg:mx-20 mx-64 my-4 "></FaPeopleCarry>
                     <p className="font my-2">More Communication</p>
                 </div>
-                
             </div>
+            
         </section>
     );
 };
