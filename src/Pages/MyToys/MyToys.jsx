@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FaEye, FaPencilAlt, FaTrash } from "react-icons/fa";
+import { FaEdit, FaEye,FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 const MyToys = () => {
@@ -77,7 +77,7 @@ const MyToys = () => {
                             <td>
                                 <div className="lg:space-x-2 space-y-2">
                                 <Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-primary btn-sm"><FaEye></FaEye></button></Link>
-                                <Link to={`/updateToy/${toy._id}`}><button className="btn btn-outline btn-accent btn-sm"><FaPencilAlt></FaPencilAlt></button></Link>
+                                <Link to={`/updateToy/${toy._id}`}><button className="btn btn-outline btn-accent btn-sm"><FaEdit></FaEdit></button></Link>
                                 <button onClick={()=>handleDelete(toy._id)} className="btn btn-outline btn-error btn-sm"><FaTrash></FaTrash></button>
                                 </div>
                             </td>
