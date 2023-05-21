@@ -27,7 +27,7 @@ const ShopByCategory = () => {
             <a className="tab hover:border px-4 hover:text-blue-600 hover:text-lg " onClick={() => handleTabClick("Language")}>Language</a>
             </div>
             </div>
-            <div className=" grid lg:grid-cols-3 space-y-5 space-x-3 mt-6 max-w-5xl mx-auto ">
+            <div className=" grid lg:grid-cols-3 space-y-5 lg:space-x-3 mt-6 lg:max-w-5xl lg:mx-auto mx-20 min-w-screen ">
                 {toys?.map((toy) => (
                 <Toys key={toy._id} toy={toy}></Toys>
                 ))}
