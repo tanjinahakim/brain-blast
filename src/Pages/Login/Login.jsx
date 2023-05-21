@@ -1,5 +1,5 @@
 import img from '../../assets/images/Logo/login4.jpg'
-import { FaGithub, FaLock, FaRegEnvelope } from "react-icons/fa";
+import { FaLock, FaRegEnvelope } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import '../../assets/fonts/font.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ const Login = () => {
                 {/* login container */}
                 <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-4xl p-5 my-20">
                     {/* form section */}
-                    <div className='sm:w-1/2 px-16 my-10'>
+                    <div className='md:w-1/2 px-16 my-10'>
                         <h2 className='font-extrabold text-3xl text-[#033663] text-center font '>Login</h2>
                         <p className='text-sm mt-4 text-[#C28B95] text-center'>If you are already a member, easily log in</p>
                         <form onSubmit={handleLogin} className='flex flex-col'>
@@ -86,14 +86,13 @@ const Login = () => {
                         </div>
                         <div className='flex mt-2 mr-6 space-x-1 items-center justify-center'>
                         <button onClick={googleLoginHandler} className="btn btn-outline btn-sm  py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FcGoogle className='mr-2'></FcGoogle> Login with Google</button>
-                        <button className="btn btn-outline btn-sm py-2 px-4 text-xs text-black border-gray-400 rounded-md"><FaGithub className='mr-2'></FaGithub>Login with Github</button>
                         </div>
                         <div className='mt-4 font-1'>
                             <p className='text-sm text-gray-500'>Don`t have an account?<Link to={'/register'} className='font text-red-600 ml-1 font-bold'>Register Now</Link></p>
                         </div>
                     </div>
                     {/* image section */}
-                    <div className='w-full p-8 mx-10 relative sm:block hidden '>
+                    <div className='w-full p-8 mx-10 relative md:block hidden '>
                         <img src={img} className='rounded-2xl' alt="" />
                         <h1 className='font text-4xl absolute text-center top-52 left-20'>Welcome Back</h1>
                     </div>

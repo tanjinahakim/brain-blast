@@ -1,13 +1,13 @@
 import { FaCameraRetro, FaLock, FaRegEnvelope, FaRegUser, FaUserCircle } from "react-icons/fa";
 import '../../assets/fonts/font.css'
-import { Link } from 'react-router-dom';
-import img from '../../assets/images/Logo/register.jpg'
+import { Link,useNavigate } from 'react-router-dom';
+import img from '../../assets/images/bg/login3.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
 const Register = () => {
     const {createUser,updated} =useContext(AuthContext);
-    
+    const navigate = useNavigate()
     const handleRegister = (event)=>{
         event.preventDefault();
         const form = event.target;
@@ -29,6 +29,7 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             updated(user,username,photo)
+            navigate('/')
         })
         .catch(error=>{
             console.log(error)
@@ -76,9 +77,9 @@ const Register = () => {
                         </div>
                     </div>
                     {/* image section */}
-                    <div className='w-full p-4 mx-4 relative sm:block hidden '>
+                    <div className='w-full p-4 mx-4 relative md:block hidden '>
                         <img src={img} className='rounded-2xl' alt="" />
-                        <h1 className='font text-4xl absolute text-center top-52 left-24 text-white'>Welcome <br /> to <br /> Brain Blast</h1>
+                        <h1 className='font text-4xl absolute text-center top-52 left-6 text-black'>Welcome <br /> to <br /> <span className="text-6xl">Brain <span className="text-white">Blast</span></span></h1>
                     </div>
                 </div>
 

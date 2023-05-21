@@ -7,12 +7,20 @@ const MyToys = () => {
     let i=0;
     const {user} = useContext(AuthContext);
     const [myToys,setMyToys]=useState([]);
-    const url = `https://brain-blast-tanjinahakim.vercel.app/allToys?email=${user?.email}`;
-    useEffect(()=> {
+    const [sortOrder, setSortOrder] = useState('asc');
+        const url = `https://brain-blast-tanjinahakim.vercel.app/allToys?email=${user?.email}`;
+        useEffect(() => {
+        if (!user?.email) {
+            setMyToys([]);
+            return;
+        } 
         fetch(url)
-        .then(res=>res.json())
-        .then(data=>setMyToys(data))
-    }, [])
+            .then(res => res.json())
+            .then(data => setMyToys(data));
+        }, [user?.email, sortOrder, url]);
+        const handleSort = (order) => {
+            setSortOrder(order);
+          };
     const handleDelete = id =>{
         Swal.fire({
             title: 'Are you sure?',
@@ -46,6 +54,10 @@ const MyToys = () => {
     }
     return (
         <>
+            <div className="max-w-4xl mx-auto mt-10 mb-3">
+            <button onClick={() => handleSort('asc')} className="btn btn-outline btn-primary mr-5">Sort Ascending</button>
+            <button onClick={() => handleSort('desc')} className="btn btn-outline btn-primary">Sort Descending</button>
+        </div>
            <div className="lg:overflow-x-auto overflow-hidden">
             <table className="table-compact w-full">
                 {/* head */}
