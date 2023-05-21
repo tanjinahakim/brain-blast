@@ -10,13 +10,13 @@ const AllToys = () => {
     const [toys,setToys]=useState([]);
     let i=0;
     useEffect(()=>{
-        fetch(`http://localhost:5000/allToys`)
+        fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys`)
         .then(res=>res.json())
         .then(data=>setToys(data))
     },[])
     const notify = () =>{
         Swal.fire({
-            title: 'Please Login First',
+            title: 'You have to log in first to view details',
             width: 600,
             padding: '3em',
             color: '#716add',

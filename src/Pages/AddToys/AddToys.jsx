@@ -17,7 +17,7 @@ const AddToys = () => {
         const photo = form.photo.value;
         const newToy = {name,seller,email,quantity,price,rating,category,description,photo}
         console.log(newToy)
-        fetch('http://localhost:5000/addToy',{
+        fetch('https://brain-blast-tanjinahakim.vercel.app/addToy',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

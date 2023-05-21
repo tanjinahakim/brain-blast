@@ -1,30 +1,38 @@
-import { useEffect, useState } from "react";
 import './Gallery.css'
+import bg2 from '../../../assets/images/gallery/bg2.jpg';
+import bg3 from '../../../assets/images/gallery/bg3.jpg';
+import bg4 from '../../../assets/images/gallery/bg4.jpg';
+import bg5 from '../../../assets/images/gallery/bg5.jpg';
+import bg6 from '../../../assets/images/gallery/bg6.jpg';
+import bg1 from '../../../assets/images/gallery/bg7.jpg';
 const Gallery = () => {
-    const [gallery,setGallery]=useState([]);
-   useEffect(()=>{
-    fetch('http://localhost:5000/gallery')
-    .then(res=>res.json())
-    .then(data=>setGallery(data))
-   },[])
+    
   
     return (
         <>
             
-            <section className="mt-20">
-            <h1 className='font font-bold text-5xl text-center'>Find best <span className='text-pink-600'>Toys</span> for your kids</h1>
-            <div className="p-24 grid lg:grid-cols-4 gap-4">
-                {
-                     gallery.map((image,i)=>(
-
-                        <img 
-                        key={i}
-                        src={image.url} 
-                        className=" p-4 shadow-lg bg-purple-200 transition-transform group-hover:scale-110 duration-200 "
-                        />
-                        ))
-                }
-            </div>
+            <section>
+                <h1 className='font font-bold text-5xl text-center my-20'>Find best <span className='text-pink-600'>Toys</span> for your kids</h1>
+                <div className='max-w-4xl mx-auto grid lg:grid-cols-3 gap-2'>
+                    <div>
+                        <img src={bg1}/>
+                    </div>
+                    <div>
+                        <img src={bg2}/>
+                    </div>
+                    <div>
+                        <img src={bg3} />
+                    </div>
+                    <div>
+                        <img src={bg4}/>
+                    </div>
+                    <div>
+                        <img src={bg5}/>
+                    </div>
+                    <div>
+                        <img src={bg6}/>
+                    </div>
+                </div>
             </section>
         </>
     );

@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         {
           path:'/toy/:id',
           element:<PrivateRoutes><Toy></Toy></PrivateRoutes>,
-          loader:({params})=> fetch(`http://localhost:5000/allToys/${params.id}`)
+          loader:({params})=> fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys/${params.id}`)
         },
         {
           path:'/myToys',
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         {
           path:'/updateToy/:id',
           element:<UpdateToy></UpdateToy>,
-          loader:({params})=> fetch(`http://localhost:5000/allToys/${params.id}`)
+          loader:({params})=> fetch(`https://brain-blast-tanjinahakim.vercel.app/allToys/${params.id}`)
         }
       ]
     },

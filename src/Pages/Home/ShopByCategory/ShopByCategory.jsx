@@ -6,7 +6,7 @@ const ShopByCategory = () => {
     const [toys,setToys]=useState([]);
     const [activeTab, setActiveTab] = useState("Math");
     useEffect(() => {
-        fetch(`http://localhost:5000/allToysCategory/${activeTab}`)
+        fetch(`https://brain-blast-tanjinahakim.vercel.app/allToysCategory/${activeTab}`)
           .then((res) => res.json())
           .then((result) =>{
             setToys(result)
