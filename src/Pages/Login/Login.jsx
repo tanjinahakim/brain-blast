@@ -2,14 +2,17 @@ import img from '../../assets/images/Logo/login4.jpg'
 import { FaGithub, FaLock, FaRegEnvelope } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import '../../assets/fonts/font.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState} from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 const Login = () => { 
     const {signIn,handleGoogleLogin}= useContext(AuthContext);
     // eslint-disable-next-line no-unused-vars
-    const [loading,setLoading]=useState(false)
+    const [loading,setLoading]=useState(false);
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/"
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -20,6 +23,8 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
+            navigate(from, {replace:true});
+            event.target.reset();
         })
         .catch(error=>{
             console.log(error.result)
@@ -35,6 +40,7 @@ const Login = () => {
         handleGoogleLogin()
         .then(result=>{
             setLoading(false)
+            navigate('/')
             console.log(result)
 
         })
